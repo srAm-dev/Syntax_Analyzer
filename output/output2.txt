@@ -1,0 +1,78 @@
+program -> array_decls stmt_sequence
+stmt_sequence -> stmt_sequence SEMI statement
+statement -> if_stmt
+if_stmt -> IF exp THEN stmt_sequence END
+stmt_sequence -> stmt_sequence SEMI statement
+statement -> write_stmt
+write_stmt -> WRITE exp
+exp -> simple_exp
+simple_exp -> term
+term -> factor
+factor -> var
+var -> ID var_dims
+var_dims -> epsilon
+stmt_sequence -> stmt_sequence SEMI statement
+statement -> repeat_stmt
+repeat_stmt -> REPEAT stmt_sequence UNTIL exp
+exp -> simple_exp RELOP simple_exp
+simple_exp -> term
+term -> factor
+factor -> NUM
+simple_exp -> term
+term -> factor
+factor -> var
+var -> ID var_dims
+var_dims -> epsilon
+stmt_sequence -> stmt_sequence SEMI statement
+statement -> assign_stmt
+assign_stmt -> var ASSIGN exp
+exp -> simple_exp
+simple_exp -> simple_exp MINUS term
+term -> factor
+factor -> NUM
+simple_exp -> term
+term -> factor
+factor -> var
+var -> ID var_dims
+var_dims -> epsilon
+var -> ID var_dims
+var_dims -> epsilon
+stmt_sequence -> statement
+statement -> assign_stmt
+assign_stmt -> var ASSIGN exp
+exp -> simple_exp
+simple_exp -> term
+term -> term TIMES factor
+factor -> var
+var -> ID var_dims
+var_dims -> epsilon
+term -> factor
+factor -> var
+var -> ID var_dims
+var_dims -> epsilon
+var -> ID var_dims
+var_dims -> epsilon
+stmt_sequence -> statement
+statement -> assign_stmt
+assign_stmt -> var ASSIGN exp
+exp -> simple_exp
+simple_exp -> term
+term -> factor
+factor -> NUM
+var -> ID var_dims
+var_dims -> epsilon
+exp -> simple_exp RELOP simple_exp
+simple_exp -> term
+term -> factor
+factor -> NUM
+simple_exp -> term
+term -> factor
+factor -> var
+var -> ID var_dims
+var_dims -> epsilon
+stmt_sequence -> statement
+statement -> read_stmt
+read_stmt -> READ var
+var -> ID var_dims
+var_dims -> epsilon
+array_decls -> epsilon

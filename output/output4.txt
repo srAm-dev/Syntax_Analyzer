@@ -1,0 +1,38 @@
+program -> array_decls stmt_sequence
+stmt_sequence -> stmt_sequence SEMI statement
+statement -> write_stmt
+write_stmt -> WRITE exp
+exp -> simple_exp
+simple_exp -> term
+term -> factor
+factor -> var
+var -> ID var_dims
+var_dims -> epsilon
+stmt_sequence -> stmt_sequence SEMI statement
+statement -> assign_stmt
+assign_stmt -> var ASSIGN exp
+exp -> simple_exp
+simple_exp -> term
+term -> term OVER factor
+factor -> NUM
+term -> term TIMES factor
+factor -> NUM
+term -> factor
+factor -> LPAREN exp RPAREN
+exp -> simple_exp
+simple_exp -> simple_exp PLUS term
+term -> factor
+factor -> NUM
+simple_exp -> term
+term -> factor
+factor -> var
+var -> ID var_dims
+var_dims -> epsilon
+var -> ID var_dims
+var_dims -> epsilon
+stmt_sequence -> statement
+statement -> read_stmt
+read_stmt -> READ var
+var -> ID var_dims
+var_dims -> epsilon
+array_decls -> epsilon
